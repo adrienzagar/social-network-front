@@ -3,9 +3,14 @@ import PropTypes from "prop-types";
 import SignUpForm from "./SignUpForm";
 import SignInForm from "./SignInForm";
 
-const Log = () => {
-	const [signUpModal, setSignUpModal] = useState(true);
-	const [signInModal, setSignInModal] = useState(false);
+interface Sign {
+    signin: boolean,
+    signup: boolean
+}
+
+const Log = ({signin, signup}: Sign) => {
+	const [signUpModal, setSignUpModal] = useState(signup);
+	const [signInModal, setSignInModal] = useState(signin);
 
 	const handleModals : MouseEventHandler = (e) => {
 		if ((e.target as HTMLElement).id === "register") {
@@ -32,7 +37,8 @@ const Log = () => {
 };
 
 Log.propTypes = {
-
+	signin: PropTypes.bool,
+	signup: PropTypes.bool,
 };
 
 export default Log;
